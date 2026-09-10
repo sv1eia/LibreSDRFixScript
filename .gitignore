@@ -1,0 +1,26 @@
+# SSH key pair written into FixScriptWin/ by "libresdr_gpsdo_fix.cmd setup-key".
+# Whoever holds lsdr_key is root on the board - it must never be committed.
+lsdr_key
+lsdr_key.pub
+
+# Backups the installers keep beside the file they replace (uEnv.txt.orig,
+# uramdisk.image.xz.orig, system_top.bin.orig), and the .orig files git itself
+# leaves behind after a conflicted merge.
+*.orig
+
+# Logs (gpsdo_boot.log and anything copied off the board).
+*.log
+
+# Stock firmware pulled off a card or a release for comparison. These are never
+# part of the repository; fix_top.bin and uramdisk.image.xz are, and are not
+# matched by any pattern here.
+system_top.bin
+uEnv.txt
+tezuka-*.zip
+
+# Editor and OS clutter.
+*~
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini

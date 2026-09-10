@@ -1,0 +1,23 @@
+# Line-ending and binary handling for LibreSDRFixScript.
+#
+# Without this file, a Windows clone with core.autocrlf=true rewrites
+# gpsdo_boot.sh with CRLF; the LibreSDR then sees "#!/bin/sh\r" and refuses
+# to run it. The rules below pin every file to the ending it needs.
+
+# Default: normalise text in the repository, check out LF everywhere.
+* text=auto eol=lf
+
+# Run on the board (BusyBox /bin/sh): LF even on a Windows checkout.
+*.sh                      text eol=lf
+
+# Windows-side files: CRLF on checkout (Notepad, cmd.exe).
+*.cmd                     text eol=crlf
+FixScriptWin/Readme.txt   text eol=crlf
+
+# Binaries: never converted, never diffed as text.
+*.bin                     binary
+*.xz                      binary
+
+# Keep "Download ZIP" and release tarballs free of repository plumbing.
+/.gitattributes           export-ignore
+/.gitignore               export-ignore
